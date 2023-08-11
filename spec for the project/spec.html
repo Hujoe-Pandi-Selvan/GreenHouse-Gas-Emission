@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>spec</title>
+  <style>
+    html {
+      line-height: 1.7;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 40em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin-top: 1.7em;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.7em;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1.7em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1.7em 0 1.7em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      font-style: italic;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      background-color: #f0f0f0;
+      font-size: 85%;
+      margin: 0;
+      padding: .2em .4em;
+    }
+    pre {
+      line-height: 1.5em;
+      padding: 1em;
+      background-color: #f0f0f0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin-top: 1.7em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border-bottom: 1px solid lightgray;
+      padding: 1em 3em 1em 0;
+    }
+    header {
+      margin-bottom: 6em;
+      text-align: center;
+    }
+    nav a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="lab-2-csccpe-203-static-methods-and-instance-methods">Lab 2, CSC/CPE 203 — Static Methods and Instance Methods</h1>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>To write <strong>overloaded</strong> methods that operate on objects of different types</li>
+<li>To write <strong>static methods</strong> to perform operations on provided objects</li>
+<li>To write <strong>instance methods</strong> to perform similar operations</li>
+<li>To able to write your own test cases to check that the code you write does what you expect it to do</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<p>Same as the previous lab.</p>
+<p>You can get the base code at the following GitHub link: <strong>TODO</strong>.</p>
+<h2 id="greenhouse-gases">Greenhouse gases</h2>
+<p>Emissions of gases that create a greenhouse effect have resulted in large-scale shifts in global weather patterns. A <em>greenhouse effect</em> occurs when the Earth absorbs sunlight and then radiates it as heat. Gases emitted largely due to human activities—like carbon dioxide and methane gas—have collected in the atmosphere, slowing the rate at which this heat leaves the atmosphere and escapes into space. This has resulted in large-scale changes in global weather patterns, i.e., climate change.</p>
+<p>In this lab, we will use Object-oriented design principles to (1) model some data about global greenhouse gas emissions (obtained from the <a href="https://edgar.jrc.ec.europa.eu/">Emissions Database for Global Atmospheric Research</a>), and (2) use the resulting classes to help answer some research questions about greenhouse gas emissions.</p>
+<hr />
+<h2 id="part-1-classes-and-overloaded-methods">Part 1: Classes and Overloaded Methods</h2>
+<p>In the provided <code>part1</code> subdirectory, implement the following classes with these general requirements.</p>
+<ul>
+<li>Each instance variable must be <code>private</code></li>
+<li>Provide constructors for creating new instances of the class with values specified as parameters</li>
+<li>Provide the appropriate “accessor”/“getter” methods for the instance variables (see <code>PartOneTestCases.java</code> for names)</li>
+<li>You may add methods beyond those required, but any such additional method must be <code>private</code></li>
+</ul>
+<blockquote>
+<p><span style="color: orange">Automaton Warning:</span> You are an intelligent person; you should not just mechanically apply these rules only to satisfy a style checker in order to complete the lab. Instead, consider the reasons for these rules, what violating them exposes to the user/client of the corresponding class, and what following them guarantees to you, the implementer. If you aren’t sure, ask your neighbor, they might have thoughts of their own.</p>
+</blockquote>
+<p>Requirements specific to each class are described below.</p>
+<h3 id="classes">Classes</h3>
+<h4 id="emission.java"><strong><code>Emission.java</code></strong></h4>
+<p>The <code>Emission</code> class represents the emissions in kilo-tons of the greenhouse gases carbon dioxide (CO2), nitrous oxide (N2O), and methane gas (CH4). Each emission amount is represented as a <code>Double</code>.</p>
+<p>So for example, an <code>Emission</code> might look like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>co2: <span class="fl">288000.0</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n2o: <span class="fl">684000.0</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ch4: <span class="fl">4690000.0</span></span></code></pre></div>
+<blockquote>
+<p><span style="color: orange;">Note:</span> The <code>Emission</code> class should have a constructor that takes <code>double</code> values for the CO2, N2O, and CH4 emissions, in that order.</p>
+</blockquote>
+<h4 id="country.java"><strong><code>Country.java</code></strong></h4>
+<p>The <code>Country</code> class represents a country and its greenhouse gas emissions over time. Each <code>Country</code> is represented by its name (<code>String</code>) and a <code>Map</code> from years (<code>Integer</code>) to the greenhouse gas <code>Emission</code> amounts for that year. So, the following…</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>name: <span class="st">&quot;United States&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>emissions:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1970</span>: <span class="fu">Emission</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    co2: <span class="fl">288000.0</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    n2o: <span class="fl">684000.0</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    ch4: <span class="fl">4690000.0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1971</span>: <span class="fu">Emission</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    co2: <span class="fl">290000.0</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    n2o: <span class="fl">689000.0</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    ch4: <span class="fl">4560000.0</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>…would indicate that the United States emitted 288,000 kilo-tons of carbon dioxide, 684,000 kilo-tons of nitrous oxide, and 4,690,000 kilo-tons of methane gas in 1970; and 290,000 kilo-tons of carbon-dioxide, 689,000 kilo-tons of nitrous oxide, and 4,560,000 kilo-tons of methane gas in 1971.</p>
+<h4 id="sector.java"><strong><code>Sector.java</code></strong></h4>
+<p><code>Sector.java</code> represents a particular sector of industry and its <em><strong>global</strong></em> greenhouse gas emissions over time, measured in kilo-tons.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Each Sector is represented by a name (<code>String</code>) and a <code>Map</code> from years (<code>Integer</code>) to greenhouse gas emissions measured in kilo-tons during that year (<code>Double</code>). So, the following…</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>name: <span class="st">&quot;Transport&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>emissions:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1970</span>: <span class="fl">2278.8</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1971</span>: <span class="fl">2358.43</span></span></code></pre></div>
+<p>…would indicate that the Transport industry emitted 2278.8 kilo-tons of greenhouse gases globally in 1970, and the equivalent of 2358.43 kilo-tons of CO2 globally in 1971 globally.</p>
+<p><strong>Note that as your implementation will be tested with <code>PartOneTestCases</code>, you may want to read exactly what the expected “get” method names are!</strong></p>
+<h3 id="overloaded-methods">Overloaded methods</h3>
+<p>Define a <code>Util</code> class with two <code>static</code> methods to <code>getYearWithHighestEmissions</code>. Each such method takes, as its single parameter, one of the classes defined in the previous step (i.e., there is one <code>getYearWithHighestEmissions</code> method that takes a <code>Country</code>, and one <code>getYearWithHighestEmissions</code> that takes a <code>Sector</code>) and returns the year with the highest greenhouse gas emissions as an <code>int</code>.</p>
+<p>To be more specific, do the following:</p>
+<ul>
+<li>For the method that takes a <code>Sector</code>, return the year with the highest emissions in its <code>Map</code> of years to emissions.</li>
+<li>For the method that takes a <code>Country</code>, return the year with the highest <em>total</em> emissions in its <code>Map</code> of years to CO2, N2O, and CH4 emissions.</li>
+</ul>
+<p>A method (or methods) like <code>getYearWithHighestEmissions</code> is considered <em>overloaded</em> since there is a separate definition for different parameter types. This is also referred to as <em>ad-hoc polymorphism</em> because the (theoretically) single method is effectively defined to work with a small set of parameter types, not for all parameter types—that is, the method takes “many forms”, but only very specific forms are supported. You will likely hear "overloaded" much more often, but “ad-hoc polymorphism” sounds so much cooler (though, admittedly, it is a bit more intimidating).</p>
+<p>Note that to call a static method like these, you can invoke:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Util</span>.<span class="fu">getYearWithHighestEmissions</span>(<span class="kw">new</span> <span class="fu">Country</span>(<span class="st">&quot;United States&quot;</span>, ...))</span></code></pre></div>
+<blockquote>
+<p><span style="color: orange">Deeper understanding:</span> How does the Java implementation know which version of <code>getYearWithHighestEmissions</code> to use when the method is invoked (not-so-great hint at this point, the compiler determines the implementation under this scenario)? If the answer is not apparent, then think about the different method invocations and speak with those around you. If the answer seems obvious, then hold on to that belief for the next few weeks to see if it continues to hold.</p>
+</blockquote>
+<h3 id="tests">Tests</h3>
+<p>Yes, of course you will want to test all of these operations. Add your tests to the provided <code>PartOneTestCases.java</code> file.</p>
+<p>Helper: here is an example of testing the highest emissions method for the Transport sector.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">testYearWithHighestEmissions</span>() {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create the testable Sector object</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Map</span>&lt;<span class="bu">Integer</span>, <span class="bu">Double</span>&gt; emissions = <span class="kw">new</span> <span class="bu">HashMap</span>&lt;&gt;();</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    emissions.<span class="fu">put</span>(<span class="dv">1970</span>, <span class="fl">2278.8</span>);</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    emissions.<span class="fu">put</span>(<span class="dv">1971</span>, <span class="fl">2356.43</span>);</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    emissions.<span class="fu">put</span>(<span class="dv">1972</span>, <span class="fl">2243.3</span>);</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    Sector sector = <span class="kw">new</span> <span class="fu">Sector</span>(<span class="st">&quot;Transport&quot;</span>, emissions);</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Check that the method works as expected</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span>(<span class="dv">1971</span>, <span class="bu">Util</span>.<span class="fu">getYearWithHighestEmissions</span>(sector));</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="part-2-methods">Part 2: Methods</h2>
+<p>Copy your files from <code>part1</code> into <code>part2</code> (you will not need the test cases file from <code>part1</code>).</p>
+<p>The definition of <code>yearWithHighestEmissions</code> in the first part of this lab does not follow an object-oriented style. This part of the lab asks that you make a few modifications to improve the code (further such improvements can come with later material). <em>Don’t worry this part will be easier!</em></p>
+<p>From <code>Util.java</code>, move each <code>getYearWithHighestEmissions</code> method into the appropriate class (as a non-<code>static</code> method, i.e., instance method) corresponding to <code>yearWithHigestEmissions</code>’s parameter. The goal is that each object “knows how” to compute its own year with the highest greenhouse gas emissions. As such, <code>yearWithHighestEmissions</code> will no longer need to take a parameter (it acts on <code>this</code> which refers to…well, there is no universally accepted term for the target of <code>this</code> because computer scientists are not very good at naming things or at agreeing on the meaning of names/terms. You might hear “calling object”, “current object”, “context object”, “target”, “callee”, “referent”, “object on which the method was invoked” (that last one is real, and accurate, but is a sign of giving up on naming)).</p>
+<p>You can remove <code>Util.java</code> once this is done.</p>
+<p><em>Take a moment…do you like one style over the other?</em></p>
+<h3 id="tests-1">Tests</h3>
+<p>Add tests to the provided <code>PartTwoTestCases.java</code> file. This is where you will also be able to see the changes of having the methods defined within each class (instance methods) versus the static methods with which this lab started. <strong>Again, there should be an added test for each of the types of <code>getYearWithHighestEmissions</code>.</strong></p>
+<p><em>Again, reflect—do you like one style over the other?</em></p>
+<h2 id="part-3-answering-some-questions">Part 3: Answering some questions</h2>
+<p>Take a look at the <code>Main.java</code> file in the <code>part3</code> directory. <strong>Don’t modify any of the existing methods in this file.</strong> In the <code>main</code> method, notice that we have created two lists, <code>countries</code> and <code>sectors</code>. Both contain real data about greenhouse gas emissions from 1970 to 2012, sourced from the <a href="https://edgar.jrc.ec.europa.eu/">Emissions Database for Global Atmospheric Research</a>. In this part, you will write methods to help make sense of this data by answering some questions.</p>
+<p>Write methods to do the following:</p>
+<ul>
+<li>Given a list of countries (<code>List&lt;Country&gt;</code>), identify the country with the highest CH4 emissions in a specified year. To do this, write a <code>static</code> method in the <code>Country</code> class with the following signature:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> Country <span class="fu">countryWithHighestCH4InYear</span>(<span class="bu">List</span>&lt;Country&gt; countries, <span class="dt">int</span> year)</span></code></pre></div>
+<ul>
+<li>Given a list of countries (<code>List&lt;Country&gt;</code>), identify the country with the highest change in <em>total greenhouse gas emissions</em> between two specified years. Write a <code>static</code> method in the <code>Country</code> class with the signature below. In addition to returning the country, print its name and the change in emissions you identified..</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> Country <span class="fu">countryWithHighestChangeInEmissions</span>(<span class="bu">List</span>&lt;Country&gt; countries, <span class="dt">int</span> startYear, <span class="dt">int</span> endYear)</span></code></pre></div>
+<ul>
+<li>Given a list of sectors (<code>List&lt;Sector&gt;</code>), identify the sector which has seen the highest average greenhouse gas emissions between two specified years. Write a <code>static</code> method in the <code>Sector</code> class with the following signature. Print the sector name and the average value you identified.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> Sector <span class="fu">sectorWithBiggestChangeInEmissions</span>(<span class="bu">List</span>&lt;Sector&gt; sectors, <span class="dt">int</span> startYear, <span class="dt">int</span> endYear)</span></code></pre></div>
+<p><small>Hint: Note that <code>startYear</code> and <code>endYear</code> provide you with a range of years. What do you use to compute something across a range of numbers?</small></p>
+<p>Back in <code>Main.java</code>, use these methods to answer the following questions using the data in the <code>countries</code> and <code>sectors</code> lists. * Which country had the highest methane gas emissions in 2000? * Which country had the highest increase in greenhouse gas emissions between 1988 (the year the Intergovernmental Panel on Climate Change was formed) and 2012? * Which sector had the highest change in greenhouse gas emissions between 1988 and 2012?</p>
+<h2 id="submission-and-demo">Submission and demo</h2>
+<p>Be sure to commit and push your code by 11:59pm on the due date. Your instructor will run additional tests on your code, which will account for the bulk of the available points for this lab.</p>
+<p>Demonstrate <strong>all</strong> parts of your working program to your instructor at once. Be prepared to show and answer questions about your source code. You will need to demo your working code IN LAB on the day it is due. (Partial credit available at the instructor’s discretion). You may not demo after your assigned lab period, unless arranged with the instructor beforehand.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Actually, emissions of gases other than CO2 are measured in <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary%3ACarbon_dioxide_equivalent">equivalent kilo-tons of CO2</a>. Amounts of other gases are converted to the equivalent amount of CO2 with the same global warming potential.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
